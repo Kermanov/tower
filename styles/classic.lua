@@ -2,7 +2,7 @@ local widget = require("widget")
 
 local style = {}
 
-function style.baseButton(x, y, width, label, onRelease, color)
+function style.baseButton(x, y, width, height, label, onRelease, color)
 	local button = widget.newButton(
 		{
 			x = x,
@@ -11,7 +11,7 @@ function style.baseButton(x, y, width, label, onRelease, color)
 			label = label,
 			shape = "roundedRect",
 			width = width,
-			height = 80,
+			height = height,
 			cornerRadius = 40,
 			fillColor = { default={ color[1], color[2], color[3], 0.4 }, over={ color[1], color[2], color[3], 0.7 } },
 			fontSize = 60,
@@ -25,11 +25,11 @@ function style.baseButton(x, y, width, label, onRelease, color)
 end
 
 function style.whiteButton(x, y, width, label, onRelease)
-	return style.baseButton(x, y, width, label, onRelease, { 1, 1, 1 })
+	return style.baseButton(x, y, width, 80, label, onRelease, { 1, 1, 1 })
 end
 
 function style.redButton(x, y, width, label, onRelease)
-	return style.baseButton(x, y, width, label, onRelease, { 1, 0.5, 0.5 })
+	return style.baseButton(x, y, width, 80, label, onRelease, { 1, 0.5, 0.5 })
 end
 
 style.textFill = {1, 1, 1}
@@ -44,11 +44,10 @@ style.backgroundFill = {
 style.colors =
 {
 	{ 0.89, 0.84, 0.37 },
-	{ 0.65, 0.89, 0.37 },
 	{ 0.87, 0.89, 0.36 }
 }
 
-style.deltaColor = 0.01
+style.deltaColor = 0.002
 
 style.perfectHitColor = {1, 1, 1}
 

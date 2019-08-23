@@ -54,29 +54,26 @@ function scene:create( event )
 	)
 	title.fill = styles[style].textFill
 	
-	local startButton = styles[style].whiteButton(
+	local startButton = styles[style].baseButton(
 		display.contentCenterX,
 		display.contentCenterY,
-		350, "play", gotoGame
+		350, 120, "play", gotoGame, {0.5, 1, 0.5}
 	)
 	sceneGroup:insert(startButton)
 
 	local highscoreButton = styles[style].whiteButton(
 		display.contentCenterX,
-		1280 * 0.59,
+		startButton.y + 130,
 		350, "highscore", gotoHighscore
 	)
 	sceneGroup:insert(highscoreButton)
 
 	local stylesButton = styles[style].whiteButton(
 		display.contentCenterX,
-		1280 * 0.68,
+		highscoreButton.y + 110,
 		350, "styles", gotoStyles
 	)
 	sceneGroup:insert(stylesButton)
-
-	print(display.screenOriginY)
-	print(display.screenOriginX)
 end
 
 
