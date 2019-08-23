@@ -47,9 +47,9 @@ function scene:create( event )
 			parent = sceneGroup,
 			text = "tower",
 			x = display.contentCenterX,
-			y = 1280 * 0.3,
+			y = 1280 * 0.25,
 			font = styles[style].font,
-			fontSize = 200
+			fontSize = 250
 		}
 	)
 	title.fill = styles[style].textFill
