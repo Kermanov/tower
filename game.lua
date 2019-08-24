@@ -56,6 +56,9 @@ local highscoreFlag
 
 local settings
 
+local perfectHitSound = composer.getVariable("perfectHitSound")
+local addWidthSound = composer.getVariable("addWidthSound")
+
 local function styleUnlockedEffect(styleName)
 	local text = display.newText(
 		{
@@ -421,8 +424,14 @@ local function build()
 					transition = easing.inBack
 				}
 			)
+
+			audio.play(addWidthSound)
 		else
 			topBlock.width = commonWidth
+
+			if deltaXmod == 0 then
+				audio.play(perfectHitSound)
+			end
 		end
 
 		-- stop moving for last block

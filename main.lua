@@ -25,5 +25,10 @@ else
 	composer.setVariable("style", "classic")
 end
 
+composer.setVariable("perfectHitSound", audio.loadSound("sounds/" .. settings.style .. "/perfect_hit.mp3"))
+composer.setVariable("addWidthSound", audio.loadSound("sounds/" .. settings.style .. "/add_width.mp3"))
+
+audio.setVolume(0.4)
+
 -- Go to the menu screen
 composer.gotoScene("menu")

@@ -37,6 +37,12 @@ end
 
 local function gotoMenu()
 	saveStyle()
+
+	audio.dispose(composer.getVariable("perfectHitSound"))
+	audio.dispose(composer.getVariable("addWidthSound"))
+	composer.setVariable("perfectHitSound", audio.loadSound("sounds/" .. currentStyle .. "/perfect_hit.mp3"))
+	composer.setVariable("addWidthSound", audio.loadSound("sounds/" .. currentStyle .. "/add_width.mp3"))
+
 	composer.setVariable("style", currentStyle)
 	composer.removeHidden()
 	composer.gotoScene( "menu", { time=300, effect="crossFade" } )
