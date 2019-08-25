@@ -739,6 +739,8 @@ function scene:create(event)
 
 	settings = loadsave.loadTable("settings.json")
 
+	Runtime:addEventListener("system", onSuspendExit)
+
 	-- display.save(sceneGroup, "screen_" .. style .. ".png")
 end
 
@@ -755,8 +757,6 @@ function scene:show( event )
 		-- creating first moving segment
 		createFirstBlock()
 		buildButton.isVisible = true
-
-		Runtime:addEventListener("system", onSuspendExit)
 
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen

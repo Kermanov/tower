@@ -1,5 +1,4 @@
 local widget = require("widget")
-local styles = require("styles")
 
 local M = {}
 

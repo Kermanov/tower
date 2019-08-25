@@ -91,6 +91,8 @@ function scene:create( event )
 		styles[style].soundCheckboxSheet
 	)
 	sceneGroup:insert(soundCheckbox)
+
+	Runtime:addEventListener("system", onSuspendExit)
 end
 
 
@@ -103,7 +105,7 @@ function scene:show( event )
 	if ( phase == "will" ) then
 		-- Code here runs when the scene is still off screen (but is about to come on screen)
 
-		Runtime:addEventListener("system", onSuspendExit)
+		soundCheckbox:setState({isOn = audio.getVolume() > 0})
 
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
@@ -136,7 +138,6 @@ function scene:destroy( event )
 	-- Code here runs prior to the removal of scene's view
 
 	Runtime:removeEventListener("system", onSuspendExit)
-
 end
 
 
