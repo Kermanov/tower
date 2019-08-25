@@ -707,8 +707,8 @@ function scene:create(event)
 		{
 			x = 720 - 70,
 			y = 70,
-			width = 70,
-			height = 70,
+			width = 80,
+			height = 80,
 			defaultFile = "images/pause_button_" .. style .. ".png",
 			onPress = gotoPause
 		}
