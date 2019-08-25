@@ -8,6 +8,7 @@
 
 local composer = require("composer")
 local loadsave = require("loadsave")
+local styles = require("styles")
 
 -- Hide status bar
 display.setStatusBar( display.HiddenStatusBar )
@@ -25,8 +26,8 @@ else
 	composer.setVariable("style", "classic")
 end
 
-composer.setVariable("perfectHitSound", audio.loadSound("sounds/" .. settings.style .. "/perfect_hit.mp3"))
-composer.setVariable("addWidthSound", audio.loadSound("sounds/" .. settings.style .. "/add_width.mp3"))
+composer.setVariable("perfectHitSound", audio.loadSound(styles[settings.style].sounds.perfectHit))
+composer.setVariable("addWidthSound", audio.loadSound(styles[settings.style].sounds.addWidth))
 
 audio.setVolume(0.4)
 

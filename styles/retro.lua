@@ -62,4 +62,10 @@ function style.confirmationBack(group)
 	return back
 end
 
+style.pauseButtonFile = "images/pause_button_retro.png"
+
+style.sounds = {}
+style.sounds.perfectHit = "sounds/retro/perfect_hit.mp3"
+style.sounds.addWidth = "sounds/retro/add_width.mp3"
+
 return style

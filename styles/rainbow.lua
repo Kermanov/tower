@@ -73,4 +73,10 @@ function style.confirmationBack(group)
 	return back
 end
 
+style.pauseButtonFile = "images/pause_button_rainbow.png"
+
+style.sounds = {}
+style.sounds.perfectHit = "sounds/rainbow/perfect_hit.mp3"
+style.sounds.addWidth = "sounds/rainbow/add_width.mp3"
+
 return style
