@@ -77,4 +77,6 @@ style.sounds = {}
 style.sounds.perfectHit = "sounds/classic/perfect_hit.mp3"
 style.sounds.addWidth = "sounds/classic/add_width.mp3"
 
+style.soundCheckboxSheet = "images/sound_checkbox_classic.png"
+
 return style

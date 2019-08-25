@@ -228,7 +228,7 @@ local function gotoPause()
 		"pause",
 		{
 			effect = "fromLeft",
-			time = 800,
+			time = 400,
 			isModal = true
 		}
 	)

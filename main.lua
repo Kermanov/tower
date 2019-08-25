@@ -9,6 +9,7 @@
 local composer = require("composer")
 local loadsave = require("loadsave")
 local styles = require("styles")
+local graphics = require("graphics")
 
 -- Hide status bar
 display.setStatusBar( display.HiddenStatusBar )
@@ -18,18 +19,24 @@ local settings = loadsave.loadTable("settings.json")
 if settings then
 	composer.setVariable("style", settings.style)
 else
-	local settings = {}
+	settings = {}
 	settings.style = "classic"
 	settings.unlockedStyles = {"classic"}
+	settings.sounds = true
 
 	loadsave.saveTable(settings, "settings.json")
 	composer.setVariable("style", "classic")
 end
 
+-- load sounds
 composer.setVariable("perfectHitSound", audio.loadSound(styles[settings.style].sounds.perfectHit))
 composer.setVariable("addWidthSound", audio.loadSound(styles[settings.style].sounds.addWidth))
 
-audio.setVolume(0.4)
+if settings.sounds then
+	audio.setVolume(0.4)
+else
+	audio.setVolume(0)
+end
 
 -- Go to the menu screen
 composer.gotoScene("menu")

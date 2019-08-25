@@ -79,4 +79,6 @@ style.sounds = {}
 style.sounds.perfectHit = "sounds/rainbow/perfect_hit.mp3"
 style.sounds.addWidth = "sounds/rainbow/add_width.mp3"
 
+style.soundCheckboxSheet = "images/sound_checkbox_rainbow.png"
+
 return style

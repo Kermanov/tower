@@ -1,6 +1,8 @@
 
 local composer = require("composer")
 local styles = require("styles")
+local utils = require("utilities")
+local uiElements = require("ui_elements")
 
 local scene = composer.newScene()
 
@@ -10,6 +12,8 @@ local scene = composer.newScene()
 -- -----------------------------------------------------------------------------------
 
 local style = composer.getVariable("style")
+
+local soundCheckbox
 
 local function gotoGame()
 	composer.gotoScene( "game", { time=800, effect="slideLeft" } )
@@ -21,6 +25,13 @@ end
 
 local function gotoStyles()
 	composer.gotoScene( "styles_screen", { time=300, effect="crossFade" } )
+end
+
+local function onSuspendExit(event)
+	if event.type == "applicationSuspend" or 
+	event.type == "applicationExit" then
+		utils.saveSettings({sounds = audio.getVolume() > 0})
+	end
 end
 
 -- -----------------------------------------------------------------------------------
@@ -74,6 +85,12 @@ function scene:create( event )
 		350, "styles", gotoStyles
 	)
 	sceneGroup:insert(stylesButton)
+
+	soundCheckbox = uiElements.newSoundCheckbox(
+		70, display.actualContentHeight - 70,
+		styles[style].soundCheckboxSheet
+	)
+	sceneGroup:insert(soundCheckbox)
 end
 
 
@@ -85,6 +102,8 @@ function scene:show( event )
 
 	if ( phase == "will" ) then
 		-- Code here runs when the scene is still off screen (but is about to come on screen)
+
+		Runtime:addEventListener("system", onSuspendExit)
 
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
@@ -115,6 +134,8 @@ function scene:destroy( event )
 
 	local sceneGroup = self.view
 	-- Code here runs prior to the removal of scene's view
+
+	Runtime:removeEventListener("system", onSuspendExit)
 
 end
 

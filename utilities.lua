@@ -1,3 +1,5 @@
+local loadsave = require("loadsave")
+
 M = {}
 
 M.shallowCopy = function(original)
@@ -19,6 +21,14 @@ end
 
 M.round = function(number, digits)
 	return tonumber(string.format("%." .. digits .. "f", number))
+end
+
+M.saveSettings = function(options)
+	local settings = loadsave.loadTable("settings.json")
+	for key, val in pairs(options) do
+		settings[key] = val
+	end
+	loadsave.saveTable(settings, "settings.json")
 end
 
 return M

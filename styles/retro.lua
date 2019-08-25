@@ -68,4 +68,6 @@ style.sounds = {}
 style.sounds.perfectHit = "sounds/retro/perfect_hit.mp3"
 style.sounds.addWidth = "sounds/retro/add_width.mp3"
 
+style.soundCheckboxSheet = "images/sound_checkbox_retro.png"
+
 return style

@@ -1,6 +1,8 @@
 
 local composer = require( "composer" )
 local styles = require("styles")
+local uiElements = require("ui_elements")
+local utils = require("utilities")
 
 local scene = composer.newScene()
 
@@ -19,7 +21,7 @@ end
 
 local function continue()
 	isContinue = true
-	composer.hideOverlay("slideRight", 800)
+	composer.hideOverlay("slideRight", 400)
 end
 
 -- -----------------------------------------------------------------------------------
@@ -55,6 +57,11 @@ function scene:create( event )
 		300, "menu", gotoMenu
 	)
 	sceneGroup:insert(menuButton)
+
+	local soundCheckbox = uiElements.newSoundCheckbox(
+		display.contentWidth - 70, 1280 * 0.5, styles[style].soundCheckboxSheet
+	)
+	sceneGroup:insert(soundCheckbox)
 end
 
 

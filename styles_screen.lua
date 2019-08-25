@@ -30,9 +30,7 @@ local styleButtons = {}
 local settings
 
 local function saveStyle()
-	local settings = loadsave.loadTable("settings.json")
-	settings.style = currentStyle
-	loadsave.saveTable(settings, "settings.json")
+	utils.saveSettings({style = currentStyle})
 end
 
 local function gotoMenu()
