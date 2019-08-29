@@ -3,6 +3,7 @@ local composer = require( "composer" )
 local styles = require("styles")
 local uiElements = require("ui_elements")
 local utils = require("utilities")
+local const = require("constants")
 
 local scene = composer.newScene()
 
@@ -16,12 +17,12 @@ local style = composer.getVariable("style")
 local isContinue = false
 
 local function gotoMenu()
-	composer.gotoScene("menu", { effect = "slideRight", time = 800 } )
+	composer.gotoScene("menu", { effect = "slideRight", time = const.SCENE_TRANS_SPEED } )
 end
 
 local function continue()
 	isContinue = true
-	composer.hideOverlay("slideRight", 400)
+	composer.hideOverlay("slideRight", const.SCENE_TRANS_SPEED)
 end
 
 -- -----------------------------------------------------------------------------------

@@ -10,7 +10,8 @@ local const =
 	MOVE_TIME = 1700,
 	MIN_MOVE_TIME = 700,
 	TIME_RANGE = 250,
-	TIME_DECREMENT = 4
+	TIME_DECREMENT = 4,
+	SCENE_TRANS_SPEED = 500
 }
 
 return const

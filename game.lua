@@ -228,7 +228,7 @@ local function gotoPause()
 		"pause",
 		{
 			effect = "fromLeft",
-			time = 400,
+			time = const.SCENE_TRANS_SPEED,
 			isModal = true
 		}
 	)
@@ -236,7 +236,7 @@ end
 
 function scene:continue()
 	if highscoreGroup.isVisible then
-		transition.to(highscoreGroup, {x = 0, time = 400})
+		transition.to(highscoreGroup, {x = 0, time = const.SCENE_TRANS_SPEED})
 	end
 
 	pauseButton.isVisible = true
@@ -551,7 +551,7 @@ local function build()
 			"game_over",
 			{
 				effect = "fromLeft",
-    			time = 800,
+    			time = const.SCENE_TRANS_SPEED,
     			isModal = true,
     			params = 
     			{

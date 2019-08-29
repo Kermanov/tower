@@ -3,6 +3,7 @@ local composer = require("composer")
 local styles = require("styles")
 local utils = require("utilities")
 local uiElements = require("ui_elements")
+local const = require("constants")
 
 local scene = composer.newScene()
 
@@ -16,15 +17,15 @@ local style = composer.getVariable("style")
 local soundCheckbox
 
 local function gotoGame()
-	composer.gotoScene( "game", { time=800, effect="slideLeft" } )
+	composer.gotoScene( "game", { time=const.SCENE_TRANS_SPEED, effect="slideLeft" } )
 end
 
 local function gotoHighscore()
-	composer.gotoScene( "highscore", { time=800, effect="slideRight" } )
+	composer.gotoScene( "highscore", { time=const.SCENE_TRANS_SPEED, effect="slideRight" } )
 end
 
 local function gotoStyles()
-	composer.gotoScene( "styles_screen", { time=300, effect="crossFade" } )
+	composer.gotoScene( "styles_screen", { time=const.SCENE_TRANS_SPEED, effect="crossFade" } )
 end
 
 local function onSuspendExit(event)

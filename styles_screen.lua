@@ -4,6 +4,7 @@ local widget = require("widget")
 local styles = require("styles")
 local loadsave = require("loadsave")
 local utils = require("utilities")
+local const = require("constants")
 
 local scene = composer.newScene()
 
@@ -43,7 +44,7 @@ local function gotoMenu()
 
 	composer.setVariable("style", currentStyle)
 	composer.removeHidden()
-	composer.gotoScene( "menu", { time=300, effect="crossFade" } )
+	composer.gotoScene( "menu", { time=const.SCENE_TRANS_SPEED, effect="crossFade" } )
 end
 
 local function updateStyle()

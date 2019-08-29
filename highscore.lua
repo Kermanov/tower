@@ -35,7 +35,7 @@ if #colors > 1 then
 end
 
 local function gotoMenu()
-	composer.gotoScene("menu", { effect = "slideLeft", time = 800 } )
+	composer.gotoScene("menu", { effect = "slideLeft", time = const.SCENE_TRANS_SPEED } )
 end
 
 local function changeColor()
