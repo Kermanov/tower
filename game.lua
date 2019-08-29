@@ -577,43 +577,83 @@ function scene:restart()
 	highscoreFlag.isVisible = false
 
 	-- return text size to normal
-	transition.to(counterText, {size = const.COUNTER_TEXT_SIZE, time = totalTime})
+	transition.to(counterText, {size = const.COUNTER_TEXT_SIZE, time = totalTime, tag = "textSizeTran"})
 
 	-- move camera to tower start
-	transition.to(actionGroup, {y = 0, time = totalTime})
+	transition.to(actionGroup, {y = 0, time = totalTime, tag = "cameraPosTran"})
+
+	local skipText
+	local blockRemover
+
+	local function finalRestart()
+		if skipText then skipText:removeSelf() end
+		bytesGroup.alpha = 1
+		color = utils.shallowCopy(afterRestartColor)
+		nextColorInd = afterRestartNextColorInd
+		targetSide = 1
+		lastSide = 1
+		createFirstBlock()
+		buildButton.isVisible = true
+		comboText.isVisible = true
+		comboText.x = counterText.x + (counterText.width + comboText.width) / 2
+		maxCombo = 0
+		perfectHits = 0
+		gameOver = false
+		curMinMoveTime = const.MOVE_TIME
+		highscoreFlag.x = counterText.x + 75 - counterText.width / 2
+		setHighscoreLine()
+	end
+
+	if counter > 30 then
+		skipText = display.newText(
+			{
+				parent = backGroup,
+				text = "tap to skip",
+				x = display.contentCenterX,
+				y = display.contentHeight * 0.35,
+				font = styles[style].font,
+				fontSize = 100,
+				width = display.contentWidth,
+				height = 200,
+				align = "center"
+			}
+		)
+		skipText.fill = styles[style].textFill
+		skipText.alpha = 0.2
+
+		skipText:addEventListener(
+		"tap",
+		function(event)
+			timer.cancel(blockRemover)
+			transition.cancel("textSizeTran")
+			transition.cancel("cameraPosTran")
+
+			for i = blocksGroup.numChildren, 6, -1 do
+				blocksGroup[i]:removeSelf()
+			end
+
+			counter = 0
+			counterText.text = "0"
+			actionGroup.y = 0
+			counterText.size = const.COUNTER_TEXT_SIZE
+			finalRestart()
+		end
+	)
+	end
 
 	-- remove all static blocks and change counter to 0
-	timer.performWithDelay(
+	blockRemover = timer.performWithDelay(
 		timeForOne,
 		function()
 			blocksGroup[blocksGroup.numChildren]:removeSelf()
 			counter = counter - 1
 			counterText.text = counter
+
+			if counter == 0 then
+				finalRestart()
+			end
 		end,
 		iterations
-	)
-
-	-- create first block
-	-- set some values to start state
-	timer.performWithDelay(
-		totalTime + iterations * 10,
-		function()
-			bytesGroup.alpha = 1
-			color = utils.shallowCopy(afterRestartColor)
-			nextColorInd = afterRestartNextColorInd
-			targetSide = 1
-			lastSide = 1
-			createFirstBlock()
-			buildButton.isVisible = true
-			comboText.isVisible = true
-			comboText.x = counterText.x + (counterText.width + comboText.width) / 2
-			maxCombo = 0
-			perfectHits = 0
-			gameOver = false
-			curMinMoveTime = const.MOVE_TIME
-			highscoreFlag.x = counterText.x + 75 - counterText.width / 2
-			setHighscoreLine()
-		end
 	)
 end
 
