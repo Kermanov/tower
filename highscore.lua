@@ -42,16 +42,9 @@ end
 
 local function gotoLeaders()
 	if gpgs.isConnected() then
-		function lbShowListener(event)
-			if event.isError and event.errorMessage ~= "canceled" then
-				native.showAlert("Error", event.errorMessage)
-			end
-		end
-
 		gpgs.leaderboards.show(
 			{
 				leaderboardId = secret.leaderboardID,
-				listener = lbShowListener,
 				timeSpan = "all time"
 			}
 		)
