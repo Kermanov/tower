@@ -4,6 +4,7 @@ local styles = require("styles")
 local utils = require("utilities")
 local uiElements = require("ui_elements")
 local const = require("constants")
+local widget = require("widget")
 
 local scene = composer.newScene()
 
@@ -26,6 +27,10 @@ end
 
 local function gotoStyles()
 	composer.gotoScene( "styles_screen", { time=const.SCENE_TRANS_SPEED, effect="crossFade" } )
+end
+
+local function gotoInfo()
+
 end
 
 local function onSuspendExit(event)
@@ -92,6 +97,18 @@ function scene:create( event )
 		styles[style].soundCheckboxSheet
 	)
 	sceneGroup:insert(soundCheckbox)
+
+	local infoButton = widget.newButton(
+		{
+			x = display.contentWidth - 70,
+			y = display.contentHeight - 70,
+			width = 80,
+			height = 80,
+			defaultFile = styles[style].infoButtonFile,
+			onPress = gotoInfo
+		}
+	)
+	sceneGroup:insert(infoButton)
 
 	Runtime:addEventListener("system", onSuspendExit)
 end
