@@ -38,7 +38,7 @@ local function gotoMenu()
 	composer.gotoScene("menu", { effect = "slideLeft", time = const.SCENE_TRANS_SPEED } )
 end
 
-local gotoLeaders()
+local function gotoLeaders()
 	
 end
 
