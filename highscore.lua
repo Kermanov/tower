@@ -38,6 +38,10 @@ local function gotoMenu()
 	composer.gotoScene("menu", { effect = "slideLeft", time = const.SCENE_TRANS_SPEED } )
 end
 
+local gotoLeaders()
+	
+end
+
 local function changeColor()
 	if #colors > 1 then
 		local colorsDone = 0
@@ -204,10 +208,12 @@ function scene:create( event )
 		{
 			parent = frontGroup,
 			text = 0,
-			x = 720 * 0.7,
+			x = 720 * 0.66,
 			y = 1280 * 0.15,
 			font = styles[style].font,
-			fontSize = 200
+			fontSize = 260,
+			width = display.contentWidth * 0.5,
+			align = "left"
 		}
 	)
 	scoreText.fill = styles[style].textFill
@@ -216,10 +222,12 @@ function scene:create( event )
 		{
 			parent = frontGroup,
 			text = "max combo",
-			x = 720 * 0.7,
+			x = 720 * 0.66,
 			y = 1280 * 0.3,
 			font = styles[style].font,
-			fontSize = 50
+			fontSize = 50,
+			width = display.contentWidth * 0.5,
+			align = "left"
 		}
 	)
 	maxComboTitle.fill = styles[style].textFill
@@ -228,10 +236,12 @@ function scene:create( event )
 		{
 			parent = frontGroup,
 			text = 0,
-			x = 720 * 0.7,
+			x = 720 * 0.66,
 			y = 1280 * 0.37,
 			font = styles[style].font,
-			fontSize = 150
+			fontSize = 140,
+			width = display.contentWidth * 0.5,
+			align = "left"
 		}
 	)
 	maxComboText.fill = styles[style].textFill
@@ -240,10 +250,12 @@ function scene:create( event )
 		{
 			parent = frontGroup,
 			text = "accuracy",
-			x = 720 * 0.7,
+			x = 720 * 0.66,
 			y = 1280 * 0.47,
 			font = styles[style].font,
-			fontSize = 50
+			fontSize = 50,
+			width = display.contentWidth * 0.5,
+			align = "left"
 		}
 	)
 	accuracyTitle.fill = styles[style].textFill
@@ -252,23 +264,34 @@ function scene:create( event )
 		{
 			parent = frontGroup,
 			text = "0%",
-			x = 720 * 0.7,
+			x = 720 * 0.66,
 			y = 1280 * 0.54,
 			font = styles[style].font,
-			fontSize = 150
+			fontSize = 140,
+			width = display.contentWidth * 0.5,
+			align = "left"
 		}
 	)
 	accuracyText.fill = styles[style].textFill
 
+	local leaderboardButton = styles[style].baseButton(
+		display.contentWidth * 0.41 + 170,
+		1280 * 0.7,
+		340, 120, "leaders", gotoLeaders, {0.5, 0.5, 1}
+	)
+	frontGroup:insert(leaderboardButton)
+
 	local menuButton = styles[style].whiteButton(
-		720 * 0.7, 1280 * 0.74,
-		300, "menu", gotoMenu
+		display.contentWidth * 0.41 + 170,
+		leaderboardButton.y + 130,
+		340, "menu", gotoMenu
 	)
 	frontGroup:insert(menuButton)
 
 	local resetButton = styles[style].redButton(
-		720 * 0.7, 1280 * 0.83,
-		300, "reset", confirmReset
+		display.contentWidth * 0.41 + 170, 
+		menuButton.y + 110,
+		340, "reset", confirmReset
 	)
 	frontGroup:insert(resetButton)
 
