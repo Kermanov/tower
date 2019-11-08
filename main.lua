@@ -10,7 +10,7 @@ local composer = require("composer")
 local loadsave = require("loadsave")
 local styles = require("styles")
 local graphics = require("graphics")
-local gpgs = require( "plugin.gpgs" )
+local gpgs = require("plugin.gpgs")
 
 -- Hide status bar
 display.setStatusBar( display.HiddenStatusBar )
@@ -31,7 +31,7 @@ end
 
 -- login in google play
 function initListener(event)
-	gpgs.login({listener = loginListener})
+	gpgs.login({listener = loginListener, userInitiated = true})
 end
 
 gpgs.init(initListener)
