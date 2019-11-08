@@ -5,6 +5,8 @@ local utils = require("utilities")
 local loadsave = require("loadsave")
 local const = require("constants")
 local styles = require("styles")
+local gpgs = require("plugin.gpgs")
+local secret = require("secret")
 
 local scene = composer.newScene()
 
@@ -179,6 +181,11 @@ local function saveHighscore()
 		local newHighscore, bestTower = createHighscore()
 		loadsave.saveTable(newHighscore, "highscore.json")
 		loadsave.saveTable(bestTower, "best_tower.json")
+	end
+
+	-- save to leaderboard
+	if gpgs.isConnected then
+		gpgs.leaderboards.submit({score = counter, leaderboardId = secret.leaderboardID})
 	end
 end
 

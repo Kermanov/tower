@@ -4,6 +4,8 @@ local loadsave = require( "loadsave" )
 local styles = require("styles")
 local const = require("constants")
 local utils = require("utilities")
+local gpgs = require("plugin.gpgs")
+local secret = require("secret")
 
 local scene = composer.newScene()
 
@@ -39,7 +41,21 @@ local function gotoMenu()
 end
 
 local function gotoLeaders()
-	
+	if gpgs.isConnected() then
+		function lbShowListener(event)
+			if event.isError and event.errorMessage ~= "canceled" then
+				native.showAlert("Error", event.errorMessage)
+			end
+		end
+
+		gpgs.leaderboards.show(
+			{
+				leaderboardId = secret.leaderboardID,
+				listener = lbShowListener,
+				timeSpan = "all time"
+			}
+		)
+	end
 end
 
 local function changeColor()

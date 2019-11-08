@@ -10,6 +10,7 @@ local composer = require("composer")
 local loadsave = require("loadsave")
 local styles = require("styles")
 local graphics = require("graphics")
+local gpgs = require( "plugin.gpgs" )
 
 -- Hide status bar
 display.setStatusBar( display.HiddenStatusBar )
@@ -27,6 +28,14 @@ else
 	loadsave.saveTable(settings, "settings.json")
 	composer.setVariable("style", "classic")
 end
+
+-- login in google play
+function initListener(event)
+	gpgs.login({listener = loginListener})
+end
+
+gpgs.init(initListener)
+
 
 -- load sounds
 composer.setVariable("perfectHitSound", audio.loadSound(styles[settings.style].sounds.perfectHit))
