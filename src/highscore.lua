@@ -48,6 +48,13 @@ local function gotoLeaders()
 				timeSpan = "all time"
 			}
 		)
+	else
+		function loginListener(event)
+			if event.phase == "logged in" then
+				gotoLeaders()
+			end
+		end
+		gpgs.login({listener = loginListener, userInitiated = true})
 	end
 end
 
