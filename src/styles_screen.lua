@@ -29,6 +29,7 @@ local menuButton
 local styleButtons = {}
 
 local settings
+local textWorkInProgress
 
 local function saveStyle()
 	utils.saveSettings({style = currentStyle})
@@ -56,6 +57,20 @@ local function updateStyle()
 		350, "menu", gotoMenu
 	)
 	frontGroup:insert(menuButton)
+
+	textWorkInProgress:removeSelf()
+	textWorkInProgress = display.newText(
+		{
+			text = "work in progress",
+			x = display.contentCenterX,
+			y = (BUTTON_HEIGHT) * (styleButtonsGroup.numChildren + 0.5),
+			font = styles[currentStyle].font,
+			fontSize = 70,
+			align = "center"
+		}
+	)
+	frontGroup:insert(textWorkInProgress)
+	textWorkInProgress.fill = styles[currentStyle].textFill
 end
 
 local function createStyleButton(styleName)
@@ -72,10 +87,10 @@ local function createStyleButton(styleName)
 
 				event.target.borderImage:removeSelf()
 				event.target.borderImage = display.newImage(
-					event.target.parent,
+					event.target,
 					"images/styles/border_selected.png",
 					event.target[1].x, event.target[1].y
-				)	
+				)
 
 				styleButtons[lastStyle].borderImage:removeSelf()
 				styleButtons[lastStyle].borderImage = display.newImage(
@@ -185,6 +200,18 @@ function scene:create(event)
 		createStyleButton(styleName)
 	end
 
+	textWorkInProgress = display.newText(
+		{
+			text = "work in progress",
+			x = display.contentCenterX,
+			y = (BUTTON_HEIGHT) * (styleButtonsGroup.numChildren + 0.5),
+			font = styles[style].font,
+			fontSize = 70,
+			align = "center"
+		}
+	)
+	textWorkInProgress.fill = styles[style].textFill
+	frontGroup:insert(textWorkInProgress)
 end
 
 
