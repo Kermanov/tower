@@ -30,7 +30,21 @@ local function gotoStyles()
 end
 
 local function gotoInfo()
-
+	composer.showOverlay(
+		"alert",
+		{
+			effect = "zoomOutIn",
+			time = 100,
+			isModal = true,
+			params = 
+			{
+				title = "about",
+				text = 	"This simple game was designed to test the capabilities of the Corona SDK framework.\n" ..
+						"If you notice any bugs or shortcomings, please write about this in the reviews.\n" ..
+						"All the best and enjoy the game!"
+			}
+		}
+	)
 end
 
 local function onSuspendExit(event)

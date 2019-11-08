@@ -57,13 +57,13 @@ style.condition = function(scores)
 	return scores.combo >= 20
 end
 
-function style.confirmationBack(group)
+function style.alertBack(group, width, height)
 	local back = display.newRoundedRect(
 		group, 
 		display.contentCenterX,
 		display.contentCenterY,
-		display.contentWidth * 0.8,
-		display.contentHeight * 0.3,
+		width,
+		height,
 		40
 	)
 	back.strokeWidth = 5,
@@ -71,6 +71,10 @@ function style.confirmationBack(group)
 	back.fill = {1, 1, 1}
 
 	return back
+end
+
+function style.confirmationBack(group)
+	return style.alertBack(group, display.contentWidth * 0.8, display.contentHeight * 0.3)
 end
 
 style.pauseButtonFile = "images/pause_button_rainbow.png"

@@ -47,19 +47,23 @@ style.condition = function(scores)
 	return scores.score >= 75
 end
 
-function style.confirmationBack(group)
+function style.alertBack(group, width, height)
 	local back = display.newRect(
 		group, 
 		display.contentCenterX,
 		display.contentCenterY,
-		display.contentWidth * 0.8,
-		display.contentHeight * 0.3
+		width,
+		height
 	)
 	back.strokeWidth = 5,
 	back:setStrokeColor(unpack(style.textFill))
 	back.fill = {0, 0, 0}
 
 	return back
+end
+
+function style.confirmationBack(group)
+	return style.alertBack(group, display.contentWidth * 0.8, display.contentHeight * 0.3)
 end
 
 style.pauseButtonFile = "images/pause_button_retro.png"

@@ -55,13 +55,13 @@ style.font = "fonts/Rajdhani-Medium.ttf"
 
 style.highscoreFlagY = 1280 * 0.13
 
-function style.confirmationBack(group)
+function style.alertBack(group, width, height)
 	local back = display.newRoundedRect(
 		group, 
 		display.contentCenterX,
 		display.contentCenterY,
-		display.contentWidth * 0.8,
-		display.contentHeight * 0.3,
+		width,
+		height,
 		40
 	)
 	back.strokeWidth = 5,
@@ -69,6 +69,10 @@ function style.confirmationBack(group)
 	back.fill = {0.21, 0.22, 0.42, 0.9}
 
 	return back
+end
+
+function style.confirmationBack(group)
+	return style.alertBack(group, display.contentWidth * 0.8, display.contentHeight * 0.3)
 end
 
 style.pauseButtonFile = "images/pause_button_classic.png"
