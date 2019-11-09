@@ -22,7 +22,7 @@ function scene:create(event)
 	text = display.newText(
 		{
 			parent = sceneGroup,
-			text = "Are you shure?",
+			text = "Are you sure?",
 			x = display.contentCenterX,
 			y = display.contentCenterY,
 			width = display.contentWidth * 0.8,
