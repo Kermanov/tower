@@ -107,7 +107,7 @@ function scene:create( event )
 	sceneGroup:insert(stylesButton)
 
 	soundCheckbox = uiElements.newSoundCheckbox(
-		70, display.actualContentHeight - 70,
+		70, display.contentHeight - 70,
 		styles[style].soundCheckboxSheet
 	)
 	sceneGroup:insert(soundCheckbox)
