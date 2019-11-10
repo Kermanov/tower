@@ -42,17 +42,10 @@ end
 
 local function gotoLeaders()
 	if gpgs.isConnected() then
-		local function showListener(event)
-			if event.isError then
-				native.showAlert("Error", event.errorMessage)
-			end
-		end
-
 		gpgs.leaderboards.show(
 			{
 				leaderboardId = secret.leaderboardID,
-				timeSpan = "all time",
-				listener = showListener
+				timeSpan = "all time"
 			}
 		)
 	else

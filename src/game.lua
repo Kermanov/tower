@@ -185,21 +185,7 @@ local function saveHighscore()
 
 	-- save to leaderboard
 	if gpgs.isConnected then
-		local function submitListener(event)
-			if event.isError then
-				native.showAlert("Error", event.errorMessage)
-			else
-				native.showAlert("Score", event.scores)
-			end
-		end
-
-		gpgs.leaderboards.submit(
-			{
-				score = counter, 
-				leaderboardId = secret.leaderboardID,
-				listener = submitListener
-			}
-		)
+		gpgs.leaderboards.submit({score = counter, leaderboardId = secret.leaderboardID})
 	end
 end
 
