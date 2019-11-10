@@ -280,11 +280,11 @@ function scene:create( event )
 		{
 			parent = frontGroup,
 			text = "0%",
-			x = 720 * 0.66,
+			x = 720 * 0.66 + display.contentWidth * 0.05,
 			y = 1280 * 0.54,
 			font = styles[style].font,
 			fontSize = 140,
-			width = display.contentWidth * 0.5,
+			width = display.contentWidth * 0.6,
 			align = "left"
 		}
 	)
