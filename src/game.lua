@@ -184,7 +184,7 @@ local function saveHighscore()
 	end
 
 	-- save to leaderboard
-	if gpgs.isConnected then
+	if gpgs.isConnected() then
 		gpgs.leaderboards.submit({score = counter, leaderboardId = secret.leaderboardID})
 	end
 end
